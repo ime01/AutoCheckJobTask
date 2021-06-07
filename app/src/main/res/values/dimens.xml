@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="user_placeholder_dimen">100dp</dimen>
+    <dimen name="textpadding">8dp</dimen>
+    <dimen name="img_dimens">200dp</dimen>
+    <dimen name="land_dimens">150dp</dimen>
+    <dimen name="icons_dimen">30dp</dimen>
+    <dimen name="edit_icon_dimen">50dp</dimen>
+</resources>
