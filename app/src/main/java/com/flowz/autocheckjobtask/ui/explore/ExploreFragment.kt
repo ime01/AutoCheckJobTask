@@ -1,10 +1,12 @@
 package com.flowz.autocheckjobtask.ui.explore
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,24 +55,40 @@ class ExploreFragment : Fragment(R.layout.fragment_explore),
 
         exploreAdapter = ExploreAdapter(this@ExploreFragment)
 
-        viewModel.allCarsMakeFromNetwork.observe(viewLifecycleOwner, Observer {
-            it.makeList.forEach {
+        viewModel.getAllCarsMake()
+        viewModel.allCarsMakeNetworkstatus.observe(viewLifecycleOwner, Observer {state->
 
-                it.apply {
-                    val make =  Make(this.id, this.imageUrl, this.name)
-                    val makeList: ArrayList<Make> = ArrayList()
-                    exploreAdapter.submitList(makeList)
+            state?.also {
+                when(it){
+                    AllCarsMakesApiStatus.ERROR->{
+                        showSnackbar(binding.rvCarsmakersIcon, getString(R.string.network_failure))
+                    }
+                    AllCarsMakesApiStatus.LOADING->{
+                       binding.progressBar.isVisible = true
+                    }
+                    AllCarsMakesApiStatus.DONE->{
+                        binding.progressBar.isVisible = true
+                        viewModel.allCarsMakeFromNetwork.observe(viewLifecycleOwner, Observer {
+                            it.makeList.forEach {
+
+                                it.apply {
+                                    val make =  Make(this.id, this.imageUrl, this.name)
+                                    val makeList: ArrayList<Make> = ArrayList()
+                                    exploreAdapter.submitList(makeList)
+                                    Log.e("PAYLOAD", "${makeList[1]}")
+                                    showSnackbar(binding.root, "Data Fetched")
+                                }
+                            }
+
+                        })
+                    }
                 }
-//
-//                val make =  Make(it.id, it.imageUrl, it.name)
-//                exploreAdapter.submitList(make)
             }
-
-//            exploreAdapter.submitList(it)
         })
 
         binding.rvCarsmakersIcon.apply {
             layoutManager = LinearLayoutManager(this.context, RecyclerView.HORIZONTAL, false )
+            adapter = exploreAdapter
         }
 
 

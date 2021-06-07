@@ -3,4 +3,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="maker_name">Maker Name</string>
+    <string name="network_failure">Car Makers Network Request Failed</string>
 </resources>
