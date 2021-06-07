@@ -55,6 +55,12 @@ class ExploreFragment : Fragment(R.layout.fragment_explore),
 
         viewModel.allCarsMakeFromNetwork.observe(viewLifecycleOwner, Observer {
             it.makeList.forEach {
+
+                it.apply {
+                    val make =  Make(this.id, this.imageUrl, this.name)
+                    val makeList: ArrayList<Make> = ArrayList()
+                    exploreAdapter.submitList(makeList)
+                }
 //
 //                val make =  Make(it.id, it.imageUrl, it.name)
 //                exploreAdapter.submitList(make)
