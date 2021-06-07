@@ -9,5 +9,5 @@ import retrofit2.http.Query
 interface ApiServiceCalls {
 
     @GET(Constants.END_POINT)
-    suspend fun getPopularMakes(@Query("popular") yesOrNo:Boolean): AllBrands
+    suspend fun getPopularMakes(@Query("popular") yesOrNo:Boolean): Response<AllBrands>
 }

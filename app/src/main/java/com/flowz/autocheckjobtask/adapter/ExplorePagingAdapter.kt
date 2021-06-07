@@ -2,15 +2,15 @@ package com.flowz.introtooralanguage.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
 import com.flowz.autocheckjobtask.R
 import com.flowz.autocheckjobtask.databinding.AllCarsMakeItemBinding
 import com.flowz.autocheckjobtask.models.Make
 
 
-class ExploreAdapter(val listener: ExploreAdapter.ExploreRowClickListener) :ListAdapter<Make, ExploreAdapter.ExploreViewHolder>(ExploreDiffCallback()) {
+class ExplorePagingAdapter(val listener: ExplorePagingAdapter.ExploreRowClickListener) :PagingDataAdapter<Make, ExplorePagingAdapter.ExploreViewHolder>(ExploreDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExploreViewHolder {
 
@@ -26,7 +26,7 @@ class ExploreAdapter(val listener: ExploreAdapter.ExploreRowClickListener) :List
         holder.binding.apply {
 
             holder.itemView.apply {
-                carMakerName.text = "{$currentItem?.name}"
+                carMakerName.text = "${currentItem?.name}"
                 val imageIcon = currentItem?.imageUrl
 
                 Glide.with(carMakerLogo)
@@ -38,16 +38,13 @@ class ExploreAdapter(val listener: ExploreAdapter.ExploreRowClickListener) :List
                     .into(carMakerLogo)
             }
         }
-
-
     }
-
  inner class ExploreViewHolder(val binding: AllCarsMakeItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
      init {
          binding.root.setOnClickListener {
              val item = getItem(bindingAdapterPosition)
-             listener.onItemClickListener(item)
+             listener.onItemClickListener(item!!)
          }
      }
 

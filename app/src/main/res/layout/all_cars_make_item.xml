@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="@dimen/textpadding"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:padding="@dimen/textpadding">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/car_maker_logo"
@@ -18,16 +18,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_directions_car_24"
-        app:shapeAppearanceOverlay="@style/Circular"/>
+        app:shapeAppearanceOverlay="@style/Circular"
+        app:srcCompat="@drawable/ic_baseline_directions_car_24" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/car_maker_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/almendra"
+        android:text="@string/maker_name"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/car_maker_logo"
         app:layout_constraintStart_toStartOf="@id/car_maker_logo"
-        app:layout_constraintTop_toBottomOf="@id/car_maker_logo"
-        android:text="@string/maker_name"
-        style="@style/WelcomeTextStyle"/>
+        app:layout_constraintTop_toBottomOf="@id/car_maker_logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

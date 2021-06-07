@@ -8,9 +8,9 @@ import javax.inject.Singleton
 @Singleton
 class Repository @Inject constructor(private val allClient:ApiServiceCalls ) {
 
-   suspend fun  getAllCarsMake(): AllBrands{
-       return allClient.getPopularMakes(true)
-   }
+//   suspend fun  getAllCarsMake(): AllBrands{
+//       return allClient.getPopularMakes(true)
+//   }
 
 
 }
