@@ -26,7 +26,9 @@ class CarsListPagingAdapter(val listener: CarsListPagingAdapter.ExploreRowClickL
         holder.binding.apply {
 
             holder.itemView.apply {
-                carMakerName.text = "${currentItem?.title}"
+                carName.text = "${currentItem?.title}"
+                carPrice.text = "Price ${currentItem?.marketplacePrice}"
+                carYear.text = "Model  #${currentItem?.year}"
 
                 val imageIcon = currentItem?.imageUrl
 //                    coil
@@ -42,7 +44,7 @@ class CarsListPagingAdapter(val listener: CarsListPagingAdapter.ExploreRowClickL
  inner class CarsListViewHolder(val binding: CarsListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
      init {
-         binding.favorite.setOnClickListener {
+         binding.root.setOnClickListener {
              val item = getItem(bindingAdapterPosition)
              listener.onItemClickListener(item!!)
          }

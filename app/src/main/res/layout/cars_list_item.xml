@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:padding="@dimen/textpadding">
@@ -19,7 +19,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@color/light_purple"
+            android:background="@color/whiteish"
             android:backgroundTint="@color/whiteish"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,14 +28,17 @@
             app:srcCompat="@drawable/ic_baseline_directions_car_24" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/car_maker_name"
+            android:id="@+id/car_name"
+            style="@style/TextLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/almendra"
+            android:layout_marginTop="12dp"
             android:text="@string/maker_name"
             android:textColor="@color/black"
-            android:textSize="16sp"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/car_maker_logo"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/car_maker_logo"
             app:layout_constraintTop_toBottomOf="@id/car_maker_logo" />
 
@@ -43,15 +46,55 @@
             android:id="@+id/favorite"
             android:layout_width="@dimen/icons_dimen"
             android:layout_height="@dimen/icons_dimen"
+            android:layout_marginTop="20dp"
             android:background="@color/favourite"
             app:layout_constraintBottom_toTopOf="@+id/car_maker_name"
             app:layout_constraintEnd_toEndOf="@+id/car_maker_logo"
-            app:layout_constraintHorizontal_bias="0.92"
+            app:layout_constraintHorizontal_bias="0.941"
             app:layout_constraintStart_toStartOf="@+id/car_maker_logo"
             app:layout_constraintTop_toTopOf="@+id/car_maker_logo"
-            app:layout_constraintVertical_bias="0.028"
+            app:layout_constraintVertical_bias="0.047"
             app:shapeAppearanceOverlay="@style/Circular"
             app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
 
+        <TextView
+            android:id="@+id/car_price"
+            style="@style/TextLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="TextView"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.135"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/car_year" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/cardview_dark_background"
+            android:clickable="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.61"
+            app:layout_constraintStart_toEndOf="@+id/car_price"
+            app:layout_constraintTop_toBottomOf="@+id/car_name"
+            app:srcCompat="@drawable/ic_baseline_add_24" />
+
+        <TextView
+            android:id="@+id/car_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/gilroyregular"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.135"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/car_name" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>

@@ -1,6 +1,7 @@
 package com.flowz.autocheckjobtask.network
 
 import com.flowz.autocheckjobtask.models.carbrandsmodels.AllBrands
+import com.flowz.autocheckjobtask.models.cardetails.CarDetails
 import com.flowz.autocheckjobtask.models.carlistmodels.CarsListModel
 import com.flowz.autocheckjobtask.utils.Constants
 import retrofit2.Response
@@ -14,4 +15,7 @@ interface ApiServiceCalls {
 
     @GET(Constants.END_POINT_CARSLIST)
     suspend fun getCarsList(): Response<CarsListModel>
+
+    @GET(Constants.END_POINT_CAR_DETAILS)
+    suspend fun getCarDetail(@Query("carId") carId: String): Response<CarDetails>
 }

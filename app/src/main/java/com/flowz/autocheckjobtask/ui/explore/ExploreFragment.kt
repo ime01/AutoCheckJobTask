@@ -7,6 +7,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,7 @@ import com.flowz.autocheckjobtask.models.carlistmodels.Result
 import com.flowz.byteworksjobtask.util.showSnackbar
 import com.flowz.introtooralanguage.adapters.CarsListPagingAdapter
 import com.flowz.introtooralanguage.adapters.ExplorePagingAdapter
+import com.flowz.paging3withflow.ui.gridview.CarListLoadStateAdapter
 import com.flowz.paging3withflow.ui.gridview.CarMakersLoadStateAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
@@ -55,6 +57,7 @@ class ExploreFragment : Fragment(R.layout.fragment_explore), ExplorePagingAdapte
 
         loadCarsMakersRecyclerView()
         loadCarsListRecyclerView()
+        loadCarsListData()
 
 
 
@@ -84,7 +87,7 @@ class ExploreFragment : Fragment(R.layout.fragment_explore), ExplorePagingAdapte
                 carslistRetry.isVisible = loadState.source.refresh is LoadState.Error
                 carListErrorText.isVisible = loadState.source.refresh is LoadState.Error
 
-                if (loadState.source.refresh is LoadState.NotLoading && loadState.append.endOfPaginationReached&& exploreAdapter.itemCount<1){
+                if (loadState.source.refresh is LoadState.NotLoading && loadState.append.endOfPaginationReached&& carsListPagingAdapter.itemCount<1){
                     rvCarsList.isVisible = false
                     carListErrorText.isVisible = true
                 }else{
@@ -105,14 +108,13 @@ class ExploreFragment : Fragment(R.layout.fragment_explore), ExplorePagingAdapte
             rvCarsList.apply {
                 layoutManager = LinearLayoutManager(this.context)
                 adapter = carsListPagingAdapter.withLoadStateHeaderAndFooter(
-                    header = CarMakersLoadStateAdapter{exploreAdapter.retry()},
-                    footer = CarMakersLoadStateAdapter{exploreAdapter.retry()}
+                    header = CarListLoadStateAdapter{carsListPagingAdapter.retry()},
+                    footer = CarListLoadStateAdapter{carsListPagingAdapter.retry()}
                 )
                 setHasFixedSize(true)
             }
         }
 
-        loadCarsListData()
 
     }
 
@@ -169,6 +171,9 @@ class ExploreFragment : Fragment(R.layout.fragment_explore), ExplorePagingAdapte
     }
 
     override fun onItemClickListener(result: Result) {
+        val action = ExploreFragmentDirections.actionExploreFragmentToProductFragment()
+        action.carId = result.id
+        Navigation.findNavController(requireView()).navigate(action)
        showSnackbar(binding.rvCarsmakers, "${result.title} is my Favorite")
     }
 
