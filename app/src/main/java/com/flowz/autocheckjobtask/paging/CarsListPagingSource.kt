@@ -4,28 +4,29 @@ import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.flowz.autocheckjobtask.models.carbrandsmodels.Make
+import com.flowz.autocheckjobtask.models.carlistmodels.Result
 import com.flowz.autocheckjobtask.network.ApiServiceCalls
 
-class ExplorePagingSource(private val apiService: ApiServiceCalls): PagingSource<Int, Make>() {
+class CarsListPagingSource(private val apiService: ApiServiceCalls): PagingSource<Int, Result>() {
 
-    override fun getRefreshKey(state: PagingState<Int, Make>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, Result>): Int? {
       return null
     }
 
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Make> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
         return try {
 
             val itemLimit = 10
             val numberOfPages = 12
             val currentPage = params.key ?:1
 
-            val response = apiService.getPopularMakes(true)
+            val response = apiService.getCarsList()
 //            Log.e(TAG, "$response")
 
-            val data = response.body()?.makeList?: emptyList()
+            val data = response.body()?.result?: emptyList()
 
-            val responseData = mutableListOf<Make>()
+            val responseData = mutableListOf<Result>()
             responseData.addAll(data)
 
             Log.e(TAG, "$responseData")
@@ -43,7 +44,7 @@ class ExplorePagingSource(private val apiService: ApiServiceCalls): PagingSource
 
 
     companion object{
-        const val TAG = "Paging Source"
+        const val TAG = "CarsList"
     }
 
 }

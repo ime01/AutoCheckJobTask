@@ -1,4 +1,4 @@
-package com.flowz.autocheckjobtask.models
+package com.flowz.autocheckjobtask.models.carbrandsmodels
 
 
 import com.google.gson.annotations.SerializedName

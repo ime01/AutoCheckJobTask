@@ -7,11 +7,13 @@
     android:layout_height="match_parent"
     tools:context="ui.explore.ExploreFragment">
 
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_carsmakers_icon"
+        android:id="@+id/rv_carsmakers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_secondary"
+        android:background="@color/design_default_color_on_primary"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,33 +24,95 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
-        app:layout_constraintStart_toStartOf="@+id/rv_carsmakers_icon"
+        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintStart_toStartOf="@+id/rv_carsmakers"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.467" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_secondary_variant"
-        android:text="Retry"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="575dp"
+       android:backgroundTint="@color/dark_blue"
+        android:text="@string/retry"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_carsmakers"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rv_carsmakers_icon"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.888" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/error_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/design_default_color_secondary_variant"
-        android:text="Error fetching data"
+        android:text="@string/error_fetching_data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rv_carsmakers_icon"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rv_carsmakers"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cars_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@color/teal_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rv_carsmakers"
+        tools:listitem="@layout/cars_list_item" />
+
+    <ProgressBar
+        android:id="@+id/cars_list_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_cars_list"
+        app:layout_constraintEnd_toEndOf="@+id/rv_cars_list"
+        app:layout_constraintHorizontal_bias="0.498"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@+id/rv_cars_list"
+        app:layout_constraintTop_toTopOf="@+id/rv_cars_list"
+        app:layout_constraintVertical_bias="0.265" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/carslist_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="@string/retry"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/cars_list_progress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_cars_list"
+        app:layout_constraintVertical_bias="0.914" />
+
+    <TextView
+        android:id="@+id/car_list_error_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/error_fetching_data"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/rv_carsmakers"
+        app:layout_constraintEnd_toEndOf="@+id/rv_carsmakers"
+        app:layout_constraintStart_toStartOf="@+id/rv_carsmakers"
+        app:layout_constraintTop_toBottomOf="@+id/cars_list_progress" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

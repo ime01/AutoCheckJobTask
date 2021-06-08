@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/textpadding">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/car_maker_logo"
+            android:layout_width="@dimen/car_pic_dimen"
+            android:layout_height="@dimen/car_pic_dimen"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/light_purple"
+            android:backgroundTint="@color/whiteish"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/RoundedSquare"
+            app:srcCompat="@drawable/ic_baseline_directions_car_24" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/car_maker_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/almendra"
+            android:text="@string/maker_name"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/car_maker_logo"
+            app:layout_constraintStart_toStartOf="@id/car_maker_logo"
+            app:layout_constraintTop_toBottomOf="@id/car_maker_logo" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/favorite"
+            android:layout_width="@dimen/icons_dimen"
+            android:layout_height="@dimen/icons_dimen"
+            android:background="@color/favourite"
+            app:layout_constraintBottom_toTopOf="@+id/car_maker_name"
+            app:layout_constraintEnd_toEndOf="@+id/car_maker_logo"
+            app:layout_constraintHorizontal_bias="0.92"
+            app:layout_constraintStart_toStartOf="@+id/car_maker_logo"
+            app:layout_constraintTop_toTopOf="@+id/car_maker_logo"
+            app:layout_constraintVertical_bias="0.028"
+            app:shapeAppearanceOverlay="@style/Circular"
+            app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

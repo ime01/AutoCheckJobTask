@@ -1,7 +1,7 @@
 package com.flowz.introtooralanguage.adapters
 
 import androidx.recyclerview.widget.DiffUtil
-import com.flowz.autocheckjobtask.models.Make
+import com.flowz.autocheckjobtask.models.carbrandsmodels.Make
 
 class ExploreDiffCallback : DiffUtil.ItemCallback<Make>(){
 

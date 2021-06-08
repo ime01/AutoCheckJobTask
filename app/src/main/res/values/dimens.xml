@@ -6,4 +6,5 @@
     <dimen name="land_dimens">150dp</dimen>
     <dimen name="icons_dimen">30dp</dimen>
     <dimen name="edit_icon_dimen">50dp</dimen>
+    <dimen name="car_pic_dimen">200dp</dimen>
 </resources>

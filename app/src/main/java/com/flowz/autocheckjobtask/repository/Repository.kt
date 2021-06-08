@@ -1,6 +1,5 @@
 package com.flowz.autocheckjobtask.repository
 
-import com.flowz.autocheckjobtask.models.AllBrands
 import com.flowz.autocheckjobtask.network.ApiServiceCalls
 import javax.inject.Inject
 import javax.inject.Singleton
